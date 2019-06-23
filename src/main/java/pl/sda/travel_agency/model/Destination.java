@@ -19,11 +19,11 @@ public class Destination {
     private String airport;
     private String hotel;
 
-  /*  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY, mappedBy = "destination")
 
     private List<Trip>trips;
-*/
+
     @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY, mappedBy = "destination")
 
