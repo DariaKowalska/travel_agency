@@ -6,54 +6,40 @@ import lombok.NoArgsConstructor;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
 public class Trip {
- /*   skąd (Miasto, Lotnisko)
-    dokąd (Miasto, Hotel, Lotnisko)
-    data wyjazdu
-    data powrotu
-    ilość dni
-    typ: (BB, HB, FB, AI - http://zw.lt/rozmaitosci/wyzywienie-w-hotelach-co-oznaczaja-bb-hb-fb-ai-ov-zpr/)
-    cena za dorosłego
-    cena za dziecko
-            promowana
-    ilość miejsc dorosłych
-    ilość miejsc dla dzieci*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id_trip;
+    private LocalDate departureTime;
+    private LocalDate arrivalTime;
+    private FeedingEnum feedingType;
+    private BigDecimal pricePerAdult;
+    private BigDecimal pricePerChild;
+    private BigDecimal promotionalPrice;
+    private Integer placeForAdult;
+    private Integer placeForChildren;
+    private Boolean promotion;
 
 
- @Id
- @GeneratedValue(strategy = GenerationType.AUTO)
- private Long id_trip;
- private String from;
- private String where;
- private LocalDate departureTime;
- private LocalDate arrivalTime;
- private FeedingEnum feedingType;
- private double pricePerAdult;
- private double pricePerChild;
- private double promotionalPrice;
- private int placeForAdult;
- private int placeForChildren;
- private boolean promotion;
+   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_airport")
 
- @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
- @JoinColumn(name = "id_airport")
+    private Airport airport;
 
- private Airport airport;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_destination")
 
- @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
- @JoinColumn(name = "id_destination")
-
- private Destination destination;
+    private Destination destination;
 
 
- //TODO
- //konstruktor
- //toString
+    //TODO
+    //konstruktor
+    //toString
 }
