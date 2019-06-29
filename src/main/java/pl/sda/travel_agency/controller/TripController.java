@@ -8,6 +8,10 @@ import pl.sda.travel_agency.model.Trip;
 import pl.sda.travel_agency.service.TripService;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import static pl.sda.travel_agency.controller.dto.TripDto.promotion;
 
 @Controller
 public class TripController {
@@ -28,13 +32,14 @@ public class TripController {
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
 
+      /*  List<Trip> tripByPromotion = trips
+                .stream()
+                .filter(t->t.getPromotion())
+                .map(t->t.getId_trip())
+                .collect(Collectors.);*/
+
         return "index";
+
     }
 
-/*    @PostMapping("/addTrip/{Admin_id}")
-    public void addTrip(
-
-            @PathVariable Long admin_id){
-        tripService.addTrip();
-    }*/
 }

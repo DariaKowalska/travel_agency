@@ -16,7 +16,7 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_country;
-    private String continentOfCountry;
+    private String name_country;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
             fetch = FetchType.LAZY, mappedBy = "country")
