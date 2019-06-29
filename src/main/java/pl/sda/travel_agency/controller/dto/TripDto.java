@@ -1,4 +1,29 @@
 package pl.sda.travel_agency.controller.dto;
 
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+import pl.sda.travel_agency.model.Airport;
+import pl.sda.travel_agency.model.Destination;
+import pl.sda.travel_agency.model.enums.FeedingEnum;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Data
 public class TripDto {
+
+    private Integer placeForAdult;
+    private Integer placeForChildren;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate departureTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate arrivalTime;
+    private FeedingEnum feedingType;
+    private BigDecimal pricePerAdult;
+    private BigDecimal pricePerChild;
+    BigDecimal promotionalPrice;
+    private Airport airport;
+    private Destination destination;
+
+
 }

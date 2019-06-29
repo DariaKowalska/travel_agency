@@ -25,7 +25,7 @@ public class Trip {
     private BigDecimal promotionalPrice;
     private Integer placeForAdult;
     private Integer placeForChildren;
-    private Boolean promotion;
+    private boolean promotion=false;
 
 
    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
@@ -38,8 +38,28 @@ public class Trip {
 
     private Destination destination;
 
+    public Trip(Integer placeForAdult, Integer placeForChildren, LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice) {
+        this.placeForAdult = placeForAdult;
+        this.placeForChildren = placeForChildren;
+        this.departureTime=departureTime;
+        this.arrivalTime= arrivalTime;
+        this.feedingType=feedingType;
+    this.pricePerAdult=pricePerAdult;
+    this.pricePerChild=pricePerChild;
+    this.promotionalPrice=promotionalPrice;
+    }
 
-    //TODO
-    //konstruktor
-    //toString
+    public Trip(LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Integer placeForChildren, Airport airport, Destination destination
+    ) {
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.feedingType = feedingType;
+        this.pricePerAdult = pricePerAdult;
+        this.pricePerChild = pricePerChild;
+        this.promotionalPrice = promotionalPrice;
+        this.placeForAdult = placeForAdult;
+        this.placeForChildren = placeForChildren;
+        this.airport=airport;
+        this.destination=destination;
+    }
 }

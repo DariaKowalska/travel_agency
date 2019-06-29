@@ -32,9 +32,12 @@ public class Airport {
 
     private City city;
 
+    public Airport(Long id_airport,String cityOfTheAirport) {
+        this.id_airport=id_airport;
+        this.cityOfTheAirport = cityOfTheAirport;
+    }
 
-
-    //TODO
+//TODO
     //konstruktor
     //toString
 }

@@ -29,7 +29,10 @@ public class Destination {
 
     private List<Hotel>hotels;
 
-
+public Destination(Long id_destination, String airport){
+    this.id_destination=id_destination;
+    this.airport=airport;
+}
     //TODO
     //konstruktor
     //toString
