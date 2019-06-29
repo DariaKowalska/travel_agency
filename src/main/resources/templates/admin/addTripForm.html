@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+<head lang="pl">
+    <title>Dodawanie cieczki</title>
+
+</head>
+<body>
+<div class="row" layout:fragment="content">
+
+    <h2 class="indigo-text center">dodawanie wycieczki</h2>
+
+    <form th:action="@{/admin/addTripForm}" th:object="${trip}" method="post" class="col m8 s12 offset-m2">
+        <div class="input-field col s6">
+            <input th:field="*{departureTime}" id="departureTime" type="date">
+            <label for="departureTime">data wyjazdu </label>
+        </div>
+        <div class="input-field col s6">
+            <input th:field="*{arrivalTime}" id="arrivalTime" type="date">
+            <label for="arrivalTime">data wyjazdu </label>
+        </div>
+        <div class="input-field col s6">
+            <select name="feedingType" th:field="*{feedingType}" id="feedingType" type="text">
+                <option value="BB">BB</option>
+                <option value="HB">HB</option>
+                <option value="FB">FB</option>
+                <option value="AI">AI</option>
+            </select>
+            <label for="feedingType">Rodzaj wyżywienia</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input th:field="*{placeForChildren}" id="placeForChildren" type="number"/>
+                <label for="placeForChildren">ilość miejsc dla dzieci</label>
+            </div>
+        </div>
+        <div class="input-field col s6">
+            <input th:field="${trip.placeForAdult}" id="place_For_Adult" type="number"/>
+            <label for="place_For_Adult">ilość miejsc dla dorosłych</label>
+        </div>
+
+<div class="row">
+    <div class="input-field col s6">
+        <input th:field="*{pricePerAdult}" id="pricePerAdult" type="number"/>
+        <label for="pricePerAdult">Cena za dorosłego</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s6">
+        <input th:field="*{pricePerChild}" id="pricePerChild" type="number"/>
+        <label for="pricePerChild">Cena za dziecko</label>
+    </div>
+</div>
+<div class="row">
+    <div class="input-field col s6">
+        <input th:field="*{promotionalPrice}" id="promotionalPrice" type="number"/>
+        <label for="promotionalPrice">Cena promocyjna</label>
+    </div>
+</div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input th:field="*{departure}" id="departure" type="number"/>
+                <label for="departure">id departure</label>
+            </div>
+        </div>
+<!--        <div class="row">-->
+<!--            <div class="input-field col s6">-->
+<!--                <input th:field="*{destination}" id="destination" type="number"/>-->
+<!--                <label for="destination">id destination</label>-->
+<!--            </div>-->
+<!--        </div>-->
+<div class="row s12">
+    <button class="btn waves-effect waves-light" type="submit" name="save">Wyślij
+        <i class="mdi-content-send right"></i>
+    </button>
+</div>
+
+</form>
+
+
+</div>
+
+</body>
+</html>
