@@ -5,19 +5,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.sda.travel_agency.controller.dto.UserDto;
 import pl.sda.travel_agency.model.User;
-import pl.sda.travel_agency.repository.RoleRepository;
 import pl.sda.travel_agency.repository.UserRepository;
 
 @Service
 public class UserService {
 
     UserRepository userRepository;
-    RoleRepository roleRepository;
+
 
     @Autowired
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
+
     }
 
 
@@ -31,7 +30,6 @@ public class UserService {
                 userDto.getEmail(),
                 encodedPassword);
 
-        user.addRole(roleRepository.getOne(1L));
         System.out.println(user);
         userRepository.save(user);
     }
@@ -43,12 +41,7 @@ public class UserService {
     }
     public User loginUser(String email, String password){
         return userRepository.findFirstByEmailAndPassword(email,password);
-    }
 
-    public void addAdmin(Long id){
-        User user = userRepository.getOne(id);
-        user.addRole(roleRepository.getOne(1L));
-        userRepository.save(user);
     }
 
 

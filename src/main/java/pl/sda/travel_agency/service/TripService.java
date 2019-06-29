@@ -3,7 +3,7 @@ package pl.sda.travel_agency.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.travel_agency.controller.dto.TripDto;
-import pl.sda.travel_agency.model.Airport;
+import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
@@ -27,7 +27,7 @@ public class TripService {
         return tripRepository.findAll();
     }
 
-    public void addTrip(Long id_trip,
+    public void addTrip(Long tripId,
                         LocalDate departureTime,
                         LocalDate arrivalTime,
                         FeedingEnum feedingType,
@@ -37,11 +37,11 @@ public class TripService {
                         Integer placeForAdult,
                         Integer placeForChildren,
                         boolean promotion,
-                        Airport airport,
+                        Departure departure,
                         Destination destination
 
     ) {
-        Trip trip = new Trip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, airport, destination);
+        Trip trip = new Trip(tripId, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
         tripRepository.save(trip);
     }
 
@@ -56,7 +56,7 @@ public class TripService {
                 tripDto.getPromotionalPrice(),
                 tripDto.getPlaceForAdult(),
                 tripDto.getPlaceForChildren(),
-                tripDto.getAirport(),
+                tripDto.getDeparture(),
         tripDto.getDestination());
         tripRepository.save(trip);
 

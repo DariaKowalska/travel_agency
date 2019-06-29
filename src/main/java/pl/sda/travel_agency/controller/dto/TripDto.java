@@ -2,7 +2,7 @@ package pl.sda.travel_agency.controller.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.sda.travel_agency.model.Airport;
+import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
@@ -22,7 +22,7 @@ public class TripDto {
     private BigDecimal pricePerAdult;
     private BigDecimal pricePerChild;
     BigDecimal promotionalPrice;
-    private Airport airport;
+    private Departure departure;
     private Destination destination;
 
 

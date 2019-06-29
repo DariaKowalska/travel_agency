@@ -7,14 +7,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.sda.travel_agency.controller.dto.AirportDto;
+
 import pl.sda.travel_agency.controller.dto.TripDto;
-import pl.sda.travel_agency.model.Airport;
+import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 import pl.sda.travel_agency.model.enums.StandardEnum;
-import pl.sda.travel_agency.service.AirportService;
 import pl.sda.travel_agency.service.TripService;
 
 import javax.validation.Valid;
@@ -28,7 +27,6 @@ public class TripController {
 
 
     TripService tripService;
-    AirportService airportService;
 
     @Autowired
     public TripController(TripService tripService) {
@@ -93,10 +91,10 @@ public class TripController {
                         Integer placeForAdult,
                         Integer placeForChildren,
                         boolean promotion,
-                        Airport airport,
+                        Departure departure,
                         Destination destination
     ) {
-        tripService.addTrip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, airport, destination);
+        tripService.addTrip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
     }
 
 //

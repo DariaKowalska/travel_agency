@@ -41,9 +41,5 @@ public class UserController {
         return "loginForm";
     }
 
-    @PutMapping("/addAdmin/{id}")
-    public void addAdmin(@PathVariable Long id){
-        userService.addAdmin(id);
-    }
 
 }

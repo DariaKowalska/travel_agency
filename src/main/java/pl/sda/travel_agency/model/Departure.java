@@ -3,6 +3,7 @@ package pl.sda.travel_agency.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sda.travel_agency.model.enums.CityEnum;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,21 +12,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Country {
+public class Departure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_country;
-    private String continentOfCountry;
+    private Long departureId;
+    private CityEnum cityEnum;
+
+
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY, mappedBy = "country")
-    private List<City>cities;
+            fetch = FetchType.LAZY, mappedBy = "departure")
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_continent")
-    private Continent continent;
+    private List<Trip> trips;
+
 
 
 }
