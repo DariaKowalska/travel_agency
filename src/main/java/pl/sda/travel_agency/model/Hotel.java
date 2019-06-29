@@ -16,8 +16,9 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_hotel;
+    private String nameHotel;
     private StandardEnum standard;
-    private String city;
+    private String cityOfHotel;
     private String specification;
 
     @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE},

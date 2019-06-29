@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

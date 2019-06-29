@@ -19,15 +19,15 @@ public class Destination {
     private String airport;
     private String hotel;
 
-  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY, mappedBy = "destination")
-
-    private List<Trip>trips;
-
-    @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY, mappedBy = "destination")
-
-    private List<Hotel>hotels;
+//  @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+//            fetch = FetchType.LAZY, mappedBy = "destination")
+//
+//    private List<Trip>trips;
+//
+//    @OneToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+//            fetch = FetchType.LAZY, mappedBy = "destination")
+//
+//    private List<Hotel>hotels;
 
 public Destination(Long id_destination, String airport){
     this.id_destination=id_destination;
