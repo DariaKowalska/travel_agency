@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface TripRepository extends JpaRepository<Trip, Long> {
 
+
  /*   //wyciągnięcie wycieczek promowanych z repo do wyświetlenia na stronie głównej
     List<Trip> findAllByPromotion (Promotion promotion);
 */
@@ -20,3 +21,4 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     List<Trip> findAllByCountry (Country country);*/
 
 }
+
