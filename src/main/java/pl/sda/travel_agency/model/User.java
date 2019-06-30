@@ -3,6 +3,7 @@ package pl.sda.travel_agency.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sda.travel_agency.model.enums.RoleEnum;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -18,34 +19,30 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id_user;
 
     private String name;
-    private String lastName;
+    private String lastname;
+
     private String email;
     private String password;
-
-
+    private RoleEnum roleEnum = RoleEnum.USER_ROLE;
     private boolean active = true;
+    private Integer buyPerAdult;
+    private Integer buyPerChild;
 
 
-    @ManyToMany(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-    @JoinTable(
-            name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    @JoinTable( name = "usertrip", joinColumns = @JoinColumn(name ="userId"), inverseJoinColumns = @JoinColumn(name="tripId"))
 
-    public User(String name, String lastName, String email, String password) {
+private Set<Trip> trips = new HashSet<>();
+
+    public User(String name, String lastname, String email, String password) {
         this.name = name;
-        this.lastName = lastName;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
     }
-
-    public void addRole(Role role){ this.roles.add(role);    }
 }
+
