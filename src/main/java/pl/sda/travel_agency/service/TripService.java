@@ -29,17 +29,6 @@ public class TripService {
 public List<Trip> getAllTrip() {
        return tripRepository.findAll();
    }
-
-    public List<Trip> getTripByPromotion(Trip promotion) {
-        return tripRepository.findAllByPromotion(promotion);
-    }
-
-
-
-
-
-
-
     public void addTrip(TripDto tripDto) {
 
         Trip trip = new Trip( tripDto.getDepartureTime(),
