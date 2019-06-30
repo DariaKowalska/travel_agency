@@ -36,7 +36,7 @@ public class TripService {
                         BigDecimal promotionalPrice,
                         Integer placeForAdult,
                         Integer placeForChildren,
-                        boolean promotion,
+                        String promotion,
                         Departure departure,
                         Destination destination
 

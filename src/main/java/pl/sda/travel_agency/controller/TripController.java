@@ -1,12 +1,11 @@
 package pl.sda.travel_agency.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.model.Departure;
@@ -39,14 +38,9 @@ public class TripController {
 
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
-
-
         return "index";
     }
-//    @GetMapping("/register")
-//    public String register(Model model){
-//        model.addAttribute("user", new UserDto());
-//        return "registerForm";
+
 
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {
@@ -69,17 +63,7 @@ public class TripController {
         return "redirect:/";
     }
 
-    //    @PostMapping("/register")
-//    public String register(@ModelAttribute("user") @Valid UserDto userDto,
-//                           BindingResult bindingResult){
-//
-//        if(bindingResult.hasErrors()){
-//            return "registerForm";
-//        }
-//
-//        userService.saveUser(userDto);
-//        return "redirect:/";
-//    }
+
     @PostMapping("/addTrip/")
     public void addTrip(Long id_trip,
                         LocalDate departureTime,
@@ -90,27 +74,9 @@ public class TripController {
                         BigDecimal promotionalPrice,
                         Integer placeForAdult,
                         Integer placeForChildren,
-                        boolean promotion,
+                        String promotion,
                         Departure departure,
                         Destination destination
     ) {
         tripService.addTrip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
-    }
-
-//
-//    @PostMapping("/addPost/{user_id}")
-//    public void addPost(
-//            String title,
-//            String content,
-//            CategoryEnum category,
-//            @PathVariable Long user_id){
-//        postService.addPost(title, content, category, user_id);
-//    }
-
-/*    @PostMapping("/addTrip/{Admin_id}")
-    public void addTrip(
-
-            @PathVariable Long admin_id){
-        tripService.addTrip();
-    }*/
-}
+    }}
