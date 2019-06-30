@@ -26,37 +26,27 @@ public class TripService {
 
     }
 
-/*    public List<Trip> getAllTrip(Long id_trip) {
-        return tripRepository.findAllById(id_trip);
-    }*/
+public List<Trip> getAllTrip() {
+       return tripRepository.findAll();
+   }
 
     public List<Trip> getTripByPromotion(Trip promotion) {
         return tripRepository.findAllByPromotion(promotion);
     }
 
-    public List<Trip> getTripByContinent(ContinentEnum continentEnum) {
-        return tripRepository.findAllByDestinationContinentEnum(continentEnum);
-    }
-
-    public List<Trip> getTripByCountry(CountryEnum countryEnum) {
-        return tripRepository.findAllByDestinationCountryEnum(countryEnum);
-    }
 
 
 
-    public void saveTrip(TripDto tripDto) {
 
-        Trip trip = new Trip(
-                tripDto.getDepartureTime(),
-                tripDto.getArrivalTime(),
-                tripDto.getFeedingType(),
-                tripDto.getPricePerAdult(),
-                tripDto.getPricePerChild(),
-                tripDto.getPromotionalPrice(),
-                tripDto.getPlaceForAdult(),
-                tripDto.getPlaceForChildren(),
-                tripDto.getDeparture(),
-        tripDto.getDestination());
+
+
+    public void addTrip(TripDto tripDto) {
+
+        Trip trip = new Trip( tripDto.getDepartureTime(),
+                tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
+
+
+
         tripRepository.save(trip);
     }
 

@@ -21,14 +21,14 @@
             <label for="arrivalTime">data wyjazdu </label>
         </div>
         <div class="input-field col s6">
-            <select name="feedingType" th:field="*{feedingType}" id="feedingType" type="text">
-                <option value="BB">BB</option>
-                <option value="HB">HB</option>
-                <option value="FB">FB</option>
-                <option value="AI">AI</option>
-            </select>
-            <label for="feedingType">Rodzaj wyżywienia</label>
-        </div>
+        <select name="feedingType" th:field="*{feedingType}" id="feedingType" type="text">
+            <option value="BB">BB</option>
+            <option value="HB">HB</option>
+            <option value="FB">FB</option>
+            <option value="AI">AI</option>
+        </select>
+        <label for="feedingType">Rodzaj wyżywienia</label>
+    </div>
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="*{placeForChildren}" id="placeForChildren" type="number"/>
@@ -64,12 +64,12 @@
                 <label for="departure">id departure</label>
             </div>
         </div>
-        <!--        <div class="row">-->
-        <!--            <div class="input-field col s6">-->
-        <!--                <input th:field="*{destination}" id="destination" type="number"/>-->
-        <!--                <label for="destination">id destination</label>-->
-        <!--            </div>-->
-        <!--        </div>-->
+        <div class="row">
+            <div class="input-field col s6">
+                <input th:field="*{destination}" id="destination" type="number"/>
+                <label for="destination">id destination</label>
+            </div>
+        </div>
         <div class="row s12">
             <button class="btn waves-effect waves-light" type="submit" name="save">Wyślij
                 <i class="mdi-content-send right"></i>
