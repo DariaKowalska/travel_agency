@@ -4,15 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+
+
+
 import org.springframework.web.bind.annotation.*;
+
 
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
+import pl.sda.travel_agency.model.enums.CountryEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 import pl.sda.travel_agency.model.enums.StandardEnum;
+import pl.sda.travel_agency.repository.TripRepository;
 import pl.sda.travel_agency.service.TripService;
 
 import javax.validation.Valid;
@@ -24,13 +31,13 @@ import java.util.List;
 @Controller
 public class TripController {
 
-
     TripService tripService;
-
     @Autowired
     public TripController(TripService tripService) {
         this.tripService = tripService;
     }
+
+
 
 
     @GetMapping("/")
@@ -40,6 +47,7 @@ public class TripController {
         model.addAttribute("trips", trips);
         return "index";
     }
+
 
 
     @GetMapping("/admin/addTripForm")
@@ -62,6 +70,7 @@ public class TripController {
         tripService.addTrip(tripDto);
         return "redirect:/";
     }
+
 
 
 

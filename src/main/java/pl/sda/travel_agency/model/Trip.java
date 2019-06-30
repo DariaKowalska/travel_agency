@@ -33,7 +33,6 @@ public class Trip {
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     @JoinColumn(name = "destinationId")
-
     private Destination destination;
 
 

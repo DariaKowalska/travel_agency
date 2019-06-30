@@ -28,6 +28,4 @@ public class Destination {
             fetch = FetchType.LAZY, mappedBy = "destination")
 
     private List<Trip> trips;
-
-
 }
