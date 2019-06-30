@@ -10,13 +10,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_trip;
+    private Long tripId;
     private LocalDate departureTime;
     private LocalDate arrivalTime;
     private FeedingEnum feedingType;
@@ -25,21 +25,33 @@ public class Trip {
     private BigDecimal promotionalPrice;
     private Integer placeForAdult;
     private Integer placeForChildren;
-    private Boolean promotion;
+    private boolean promotion=false;
 
-
-   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_airport")
-
-    private Airport airport;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "departureId")
+    private Departure departure;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_destination")
-
+    @JoinColumn(name = "destinationId")
     private Destination destination;
 
 
-    //TODO
-    //konstruktor
-    //toString
-}
+
+    public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult
+    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,  Departure departure, Destination destination ){
+        this.departureTime=departureTime;
+        this.arrivalTime=arrivalTime;
+        this.feedingType=feedingType;
+        this.placeForChildren=placeForChildren;
+        this.placeForAdult=placeForAdult;
+        this.pricePerAdult=pricePerAdult;
+        this.pricePerChild=pricePerChild;
+        this.promotionalPrice=promotionalPrice;
+        this.departure=departure;
+        this.destination=destination;
+    }
+            //,Integer placeForChildren, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Departure departure, Destination destination) {
+
+
+    }
+
