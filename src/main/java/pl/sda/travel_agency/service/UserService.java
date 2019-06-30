@@ -7,6 +7,7 @@ import pl.sda.travel_agency.controller.dto.UserDto;
 import pl.sda.travel_agency.model.User;
 import pl.sda.travel_agency.repository.UserRepository;
 
+
 @Service
 public class UserService {
 
@@ -18,7 +19,6 @@ public class UserService {
         this.userRepository = userRepository;
 
     }
-
 
     //zapisujemy użytkownika po rejestracji do bazy danych
     public void saveUser(UserDto userDto) {
@@ -43,6 +43,5 @@ public class UserService {
         return userRepository.findFirstByEmailAndPassword(email,password);
 
     }
-
 
 }

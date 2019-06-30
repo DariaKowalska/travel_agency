@@ -6,14 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
+import pl.sda.travel_agency.model.enums.CountryEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 import pl.sda.travel_agency.model.enums.StandardEnum;
+import pl.sda.travel_agency.repository.TripRepository;
 import pl.sda.travel_agency.service.TripService;
 
 import javax.validation.Valid;
@@ -25,28 +29,12 @@ import java.util.List;
 @Controller
 public class TripController {
 
-
     TripService tripService;
-
     @Autowired
     public TripController(TripService tripService) {
         this.tripService = tripService;
     }
 
-
-    @GetMapping("/")
-    public String getAllTrip(Model model) {
-
-        List<Trip> trips = tripService.getAllTrip();
-        model.addAttribute("trips", trips);
-
-
-        return "index";
-    }
-//    @GetMapping("/register")
-//    public String register(Model model){
-//        model.addAttribute("user", new UserDto());
-//        return "registerForm";
 
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {
@@ -69,32 +57,27 @@ public class TripController {
         return "redirect:/";
     }
 
-    //    @PostMapping("/register")
-//    public String register(@ModelAttribute("user") @Valid UserDto userDto,
-//                           BindingResult bindingResult){
-//
-//        if(bindingResult.hasErrors()){
-//            return "registerForm";
-//        }
-//
-//        userService.saveUser(userDto);
-//        return "redirect:/";
-//    }
-    @PostMapping("/addTrip/")
-    public void addTrip(Long id_trip,
-                        LocalDate departureTime,
-                        LocalDate arrivalTime,
-                        FeedingEnum feedingType,
-                        BigDecimal pricePerAdult,
-                        BigDecimal pricePerChild,
-                        BigDecimal promotionalPrice,
-                        Integer placeForAdult,
-                        Integer placeForChildren,
-                        boolean promotion,
-                        Departure departure,
-                        Destination destination
-    ) {
-        tripService.addTrip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
+
+   /* @GetMapping("/trip")
+    public String getAllTrip(Model model) {
+        List<Trip> trips = tripService.getAllById(id_trip);
+        model.addAttribute("trips", trips);
+        return "index";
+    }*/
+
+    @PostMapping("/trip/{promotion}")
+    public String getTripByPromotion(@PathVariable("promotion") Trip promotion) {
+        return "promotionPage";
+    }
+
+    @PostMapping("/kontynent/{enumContinent}")
+    public String getTripByContinent(@PathVariable("enumContinent") ContinentEnum continentEnum) {
+        return "continentPage";
+    }
+
+    @PostMapping("/panstwo/{enumCountry}")
+    public String getTripByCountry(@PathVariable("enumCountry") CountryEnum countryEnum) {
+        return "countryPage";
     }
 
 //

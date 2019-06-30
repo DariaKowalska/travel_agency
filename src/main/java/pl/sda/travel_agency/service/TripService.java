@@ -6,9 +6,12 @@ import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
+import pl.sda.travel_agency.model.enums.CountryEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 import pl.sda.travel_agency.repository.TripRepository;
 
+import javax.persistence.EntityManager;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -20,30 +23,26 @@ public class TripService {
     @Autowired
     public TripService(TripRepository tripRepository) {
         this.tripRepository = tripRepository;
+
+    }
+
+/*    public List<Trip> getAllTrip(Long id_trip) {
+        return tripRepository.findAllById(id_trip);
+    }*/
+
+    public List<Trip> getTripByPromotion(Trip promotion) {
+        return tripRepository.findAllByPromotion(promotion);
+    }
+
+    public List<Trip> getTripByContinent(ContinentEnum continentEnum) {
+        return tripRepository.findAllByDestinationContinentEnum(continentEnum);
+    }
+
+    public List<Trip> getTripByCountry(CountryEnum countryEnum) {
+        return tripRepository.findAllByDestinationCountryEnum(countryEnum);
     }
 
 
-    public List<Trip> getAllTrip() {
-        return tripRepository.findAll();
-    }
-
-    public void addTrip(Long tripId,
-                        LocalDate departureTime,
-                        LocalDate arrivalTime,
-                        FeedingEnum feedingType,
-                        BigDecimal pricePerAdult,
-                        BigDecimal pricePerChild,
-                        BigDecimal promotionalPrice,
-                        Integer placeForAdult,
-                        Integer placeForChildren,
-                        boolean promotion,
-                        Departure departure,
-                        Destination destination
-
-    ) {
-        Trip trip = new Trip(tripId, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
-        tripRepository.save(trip);
-    }
 
     public void saveTrip(TripDto tripDto) {
 
@@ -59,8 +58,6 @@ public class TripService {
                 tripDto.getDeparture(),
         tripDto.getDestination());
         tripRepository.save(trip);
-
-
     }
 
 }
