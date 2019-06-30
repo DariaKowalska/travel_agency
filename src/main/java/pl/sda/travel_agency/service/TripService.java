@@ -29,11 +29,11 @@ public class TripService {
 
 
 
-    public void saveTrip(TripDto tripDto) {
+    public void addTrip(TripDto tripDto) {
 
         Trip trip = new Trip( tripDto.getDepartureTime(),
                 tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
-        System.out.println("AAAAAAAAAAAA" + tripDto.getDeparture());
+
 //
         tripRepository.save(trip);
 

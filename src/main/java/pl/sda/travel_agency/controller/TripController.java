@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
@@ -43,10 +44,7 @@ public class TripController {
 
         return "index";
     }
-//    @GetMapping("/register")
-//    public String register(Model model){
-//        model.addAttribute("user", new UserDto());
-//        return "registerForm";
+
 
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {
@@ -65,21 +63,10 @@ public class TripController {
             return "/resultPage";
         }
 
-        tripService.saveTrip(tripDto);
+        tripService.addTrip(tripDto);
         return "redirect:/";
     }
 
-    //    @PostMapping("/register")
-//    public String register(@ModelAttribute("user") @Valid UserDto userDto,
-//                           BindingResult bindingResult){
-//
-//        if(bindingResult.hasErrors()){
-//            return "registerForm";
-//        }
-//
-//        userService.saveUser(userDto);
-//        return "redirect:/";
-//    }
 
 
 
