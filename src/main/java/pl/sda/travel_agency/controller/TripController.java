@@ -40,7 +40,7 @@ public class TripController {
 
 
 
-    @GetMapping("/")
+    @GetMapping("/trip")
     public String getAllTrip(Model model) {
 
         List<Trip> trips = tripService.getAllTrip();

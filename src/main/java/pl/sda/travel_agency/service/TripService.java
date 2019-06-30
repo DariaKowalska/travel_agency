@@ -30,9 +30,9 @@ public List<Trip> getAllTrip() {
        return tripRepository.findAll();
    }
 
-    public List<Trip> getTripByPromotion(Trip promotion) {
-        return tripRepository.findAllByPromotion(promotion);
-    }
+//    public List<Trip> getTripByPromotion(Trip promotion) {
+//        return tripRepository.findAllByPromotion(promotion);
+//    }
 
 
 
