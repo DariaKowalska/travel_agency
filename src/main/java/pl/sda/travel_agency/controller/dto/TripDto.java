@@ -12,18 +12,18 @@ import java.time.LocalDate;
 @Data
 public class TripDto {
 
-    private Integer placeForAdult;
-    private Integer placeForChildren;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate departureTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate arrivalTime;
     private FeedingEnum feedingType;
+    private Integer placeForAdult;
+    private Integer placeForChildren;
     private BigDecimal pricePerAdult;
     private BigDecimal pricePerChild;
     BigDecimal promotionalPrice;
     private Departure departure;
-    private Destination destination;
+     private Destination destination;
 
 
 }

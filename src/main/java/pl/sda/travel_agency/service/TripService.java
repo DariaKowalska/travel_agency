@@ -27,37 +27,14 @@ public class TripService {
         return tripRepository.findAll();
     }
 
-    public void addTrip(Long tripId,
-                        LocalDate departureTime,
-                        LocalDate arrivalTime,
-                        FeedingEnum feedingType,
-                        BigDecimal pricePerAdult,
-                        BigDecimal pricePerChild,
-                        BigDecimal promotionalPrice,
-                        Integer placeForAdult,
-                        Integer placeForChildren,
-                        boolean promotion,
-                        Departure departure,
-                        Destination destination
 
-    ) {
-        Trip trip = new Trip(tripId, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
-        tripRepository.save(trip);
-    }
 
     public void saveTrip(TripDto tripDto) {
 
-        Trip trip = new Trip(
-                tripDto.getDepartureTime(),
-                tripDto.getArrivalTime(),
-                tripDto.getFeedingType(),
-                tripDto.getPricePerAdult(),
-                tripDto.getPricePerChild(),
-                tripDto.getPromotionalPrice(),
-                tripDto.getPlaceForAdult(),
-                tripDto.getPlaceForChildren(),
-                tripDto.getDeparture(),
-        tripDto.getDestination());
+        Trip trip = new Trip( tripDto.getDepartureTime(),
+                tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
+        System.out.println("AAAAAAAAAAAA" + tripDto.getDeparture());
+//
         tripRepository.save(trip);
 
 

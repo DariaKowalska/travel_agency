@@ -80,37 +80,7 @@ public class TripController {
 //        userService.saveUser(userDto);
 //        return "redirect:/";
 //    }
-    @PostMapping("/addTrip/")
-    public void addTrip(Long id_trip,
-                        LocalDate departureTime,
-                        LocalDate arrivalTime,
-                        FeedingEnum feedingType,
-                        BigDecimal pricePerAdult,
-                        BigDecimal pricePerChild,
-                        BigDecimal promotionalPrice,
-                        Integer placeForAdult,
-                        Integer placeForChildren,
-                        boolean promotion,
-                        Departure departure,
-                        Destination destination
-    ) {
-        tripService.addTrip(id_trip, departureTime, arrivalTime, feedingType, pricePerAdult, pricePerChild, promotionalPrice, placeForAdult, placeForChildren, promotion, departure, destination);
-    }
 
-//
-//    @PostMapping("/addPost/{user_id}")
-//    public void addPost(
-//            String title,
-//            String content,
-//            CategoryEnum category,
-//            @PathVariable Long user_id){
-//        postService.addPost(title, content, category, user_id);
-//    }
 
-/*    @PostMapping("/addTrip/{Admin_id}")
-    public void addTrip(
 
-            @PathVariable Long admin_id){
-        tripService.addTrip();
-    }*/
 }

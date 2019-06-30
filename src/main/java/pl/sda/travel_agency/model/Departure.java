@@ -21,10 +21,10 @@ public class Departure {
 
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY, mappedBy = "departure")
+//    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+//            fetch = FetchType.LAZY, mappedBy = "departure")
 
-    private List<Trip> trips;
+   // private List<Trip> trips;
 
 
 
