@@ -25,7 +25,7 @@ public class Trip {
     private BigDecimal promotionalPrice;
     private Integer placeForAdult;
     private Integer placeForChildren;
-    private String promotion;
+    private boolean promotion=false;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "departureId")
