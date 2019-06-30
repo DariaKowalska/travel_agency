@@ -40,7 +40,6 @@ public class TripController {
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
 
-
         return "index";
     }
 //    @GetMapping("/register")
@@ -51,8 +50,6 @@ public class TripController {
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {
         model.addAttribute("trip", new TripDto());
-
-
         return "/admin/addTripForm";
     }
 
