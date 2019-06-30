@@ -37,6 +37,7 @@
                 <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
                 <a class="navbar-brand text-success" th:if="${auth != null}" text="${auth.getPrincipal().getUsername()}">Login
                     in</a>
+<!--        <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>-->
 
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +87,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
 
-                <form th:action="@{/login-process}" th:method="get" >
+                <form th:action="@{/login-process}" th:method="post" >
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls">
 

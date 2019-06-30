@@ -28,13 +28,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // tutaj są URL wymagające autoryzacji - strefa chroniona
                 // .antMatchers(/url) -> wymaga autoryzacji
                 //         .hasAnyAuthority("uprawnienie") //-> dla określonego uprawnienia
-                .antMatchers("/deletepost/**")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                .antMatchers("/addpost")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                .antMatchers("/updatepost/**")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                // pozostałe URL udostępnij dla każdego
+//                .antMatchers("/deletepost/**")
+//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                .antMatchers("/addpost")
+//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                .antMatchers("/updatepost/**")
+//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                // pozostałe URL udostępnij dla każdego
 
                 .anyRequest().permitAll()
                 .and()
@@ -68,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // SQL dla logowania użytkownika po adresie email i haśle
                 .usersByUsernameQuery("SELECT u.email, u.password, u.active FROM user u WHERE u.email = ?")
                 // SQL dla przypisania uprawnień dla zalogowanego użytkownika
-                .authoritiesByUsernameQuery("SELECT u.email, r.role_name FROM user u JOIN user_role ur ON ur.id_user = u.id JOIN role r ON ur.id_role = r.id WHERE u.email = ?")
+                .authoritiesByUsernameQuery("SELECT u.email, u.role_enum FROM user u WHERE u.email = ?")
                 // wynik logowania
                 .dataSource(dataSource)
                 // szyfrowanie hasła
