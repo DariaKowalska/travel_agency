@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Data
 public class TripDto {
-
+private Long tripId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate departureTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

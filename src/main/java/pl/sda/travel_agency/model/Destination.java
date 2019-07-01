@@ -24,8 +24,8 @@ public class Destination {
     private ContinentEnum continentEnum;
     private String hotel;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            fetch = FetchType.LAZY, mappedBy = "destination")
-
-    private List<Trip> trips;
+//    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+//            fetch = FetchType.LAZY, mappedBy = "destination")
+//
+//    private List<Trip> trips;
 }
