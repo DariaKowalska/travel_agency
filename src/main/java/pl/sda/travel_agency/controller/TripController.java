@@ -37,18 +37,18 @@ public class TripController {
         this.tripService = tripService;
     }
 
-
-
-
-    @GetMapping("/trip")
+    @GetMapping("/findPage")
     public String getAllTrip(Model model) {
-
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
-        return "index";
+        return "/findPage";
     }
-
-
+    @GetMapping("/kontynent/{continentEnum}")
+    public String getTripByContinent(Model model, @PathVariable("continentEnum") ContinentEnum continentEnum) {
+        List<Trip> trips = tripService.getTripByContinent(continentEnum);
+        model.addAttribute("trips", trips);
+        return "continentPage";
+    }
 
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {
@@ -57,7 +57,6 @@ public class TripController {
 
         return "/admin/addTripForm";
     }
-
 
     @PostMapping("/admin/addTripForm")
     public String register(@ModelAttribute("trip") @Valid TripDto tripDto,

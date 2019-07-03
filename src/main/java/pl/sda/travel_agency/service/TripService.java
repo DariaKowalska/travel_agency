@@ -26,15 +26,22 @@ public class TripService {
 
     }
 
-public List<Trip> getAllTrip() {
-       return tripRepository.findAll();
-   }
+    public List<Trip> getAllTrip() {
+        return tripRepository.findAll();
+    }
+
+    public List<Trip> getTripByContinent(ContinentEnum continentEnum) {
+        return tripRepository.findAllByDestinationContinentEnum(continentEnum);
+    }
+
+    public List<Trip> getTripByCountry(CountryEnum countryEnum) {
+        return tripRepository.findAllByDestinationCountryEnum(countryEnum);
+    }
+
     public void addTrip(TripDto tripDto) {
 
-        Trip trip = new Trip( tripDto.getDepartureTime(),
+        Trip trip = new Trip(tripDto.getDepartureTime(),
                 tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
-
-
 
         tripRepository.save(trip);
     }
