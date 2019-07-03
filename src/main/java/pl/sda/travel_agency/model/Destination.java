@@ -19,9 +19,9 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long destinationId;
-    private CityEnum cityEnum;
-    private CountryEnum countryEnum;
-    private ContinentEnum continentEnum;
+    private String  cityEnum;
+    private String countryEnum;
+    private String continentEnum;
     private String hotel;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},

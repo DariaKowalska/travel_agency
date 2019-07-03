@@ -96,8 +96,7 @@
             <th>Place for adult</th>
             <th>Place for child</th>
             <th>Promotion</th>
-            <th>Departure Id</th>
-            <th>Departure city</th>
+            <th>Departure</th>
             <th>Destination Id</th>
             <th>Destination city</th>
             <th>Destination country</th>
@@ -105,23 +104,22 @@
             <th>Destination hotel</th>
         </tr>
         <tr th:each="trip : ${trips}">
-            <td th:text="${trip.tripId}">123</td>
-            <td th:text="${trip.departureTime}">Spring in Action</td>
-            <td th:text="${trip.arrivalTime}">Wrox</td>
-            <td th:text="${trip.feedingType}">123</td>
-            <td th:text="${trip.pricePerAdult}">Spring in Action</td>
-            <td th:text="${trip.pricePerChild}">Wrox</td>
-            <td th:text="${trip.promotionPrice}">123</td>
-            <td th:text="${trip.placeForAdult}">Spring in Action</td>
-            <td th:text="${trip.placeForChild}">Wrox</td>
-            <td th:text="${trip.promotion}">123</td>
-            <td th:text="${trip.departure.departureId}">Spring in Action</td>
-            <td th:text="${trip.departure.cityEnum}">Wrox</td>
-            <td th:text="${trip.destination.destinationId}">123</td>
-            <td th:text="${trip.destination.cityEnum}">Spring in Action</td>
-            <td th:text="${trip.destination.countryEnum}">Wrox</td>
-            <td th:text="${trip.destination.continentEnum}">123</td>
-            <td th:text="${trip.destination.hotel}">Spring in Action</td>
+            <td th:text="${trip.tripId}"></td>
+            <td th:text="${trip.departureTime}"></td>
+            <td th:text="${trip.arrivalTime}"></td>
+            <td th:text="${trip.feedingType}"></td>
+            <td th:text="${trip.pricePerAdult}"></td>
+            <td th:text="${trip.pricePerChild}"></td>
+            <td th:text="${trip.promotionalPrice}"></td>
+            <td th:text="${trip.placeForAdult}"></td>
+            <td th:text="${trip.placeForChildren}"></td>
+            <td th:text="${trip.promotion}"></td>
+            <td th:text="${trip.departure}"></td>
+            <td th:text="${trip.destination.destinationId}"></td>
+            <td th:text="${trip.destination.cityEnum}"></td>
+            <td th:text="${trip.destination.countryEnum}"></td>
+            <td th:text="${trip.destination.continentEnum}"></td>
+            <td th:text="${trip.destination.hotel}"></td>
         </tr>
     </table>
 

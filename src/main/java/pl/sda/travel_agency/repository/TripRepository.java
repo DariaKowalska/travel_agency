@@ -16,8 +16,8 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
 
     //wyciągnięcie wycieczek ze względu na podział na kontynenty do wyświetlenia na stronie głównej
 
-    List<Trip> findAllByDestinationContinentEnum(ContinentEnum continentEnum);
+    List<Trip> findAllByDestinationContinentEnum(String continentEnum);
 
-    List<Trip> findAllByDestinationCountryEnum(CountryEnum countryEnum);
+    List<Trip> findAllByDestinationCountryEnum(String countryEnum);
 
 }

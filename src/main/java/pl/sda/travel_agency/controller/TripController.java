@@ -10,22 +10,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.sda.travel_agency.controller.dto.TripDto;
-import pl.sda.travel_agency.model.Departure;
-import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.Trip;
 import pl.sda.travel_agency.model.enums.ContinentEnum;
-import pl.sda.travel_agency.model.enums.CountryEnum;
-import pl.sda.travel_agency.model.enums.FeedingEnum;
-import pl.sda.travel_agency.model.enums.StandardEnum;
-import pl.sda.travel_agency.repository.TripRepository;
 import pl.sda.travel_agency.service.TripService;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -37,14 +27,13 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @GetMapping("/findPage")
+    @RequestMapping("/findPage")
     public String getAllTrip(Model model) {
-        List<Trip> trips = tripService.getAllTrip();
-        model.addAttribute("trips", trips);
-        return "/findPage";
+        model.addAttribute("trips", tripService.getAllTrip());
+        return "findPage";
     }
     @GetMapping("/kontynent/{continentEnum}")
-    public String getTripByContinent(Model model, @PathVariable("continentEnum") ContinentEnum continentEnum) {
+    public String getTripByContinent(Model model, @PathVariable("continentEnum") String continentEnum) {
         List<Trip> trips = tripService.getTripByContinent(continentEnum);
         model.addAttribute("trips", trips);
         return "continentPage";

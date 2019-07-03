@@ -26,10 +26,7 @@ public class Trip {
     private Integer placeForAdult;
     private Integer placeForChildren;
     private boolean promotion=false;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "departureId")
-    private Departure departure;
+    private String departure;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     @JoinColumn(name = "destinationId")
@@ -38,7 +35,7 @@ public class Trip {
 
 
     public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult
-    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,  Departure departure, Destination destination ){
+    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, String departure, Destination destination ){
         this.departureTime=departureTime;
         this.arrivalTime=arrivalTime;
         this.feedingType=feedingType;
