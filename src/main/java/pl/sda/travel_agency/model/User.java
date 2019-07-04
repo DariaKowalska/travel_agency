@@ -1,8 +1,6 @@
 package pl.sda.travel_agency.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.sda.travel_agency.model.enums.RoleEnum;
 
 import javax.persistence.*;
@@ -12,7 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -32,11 +31,8 @@ public class User {
     private Integer buyPerChild;
 
 
-    @ManyToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
-    @JoinTable( name = "usertrip", joinColumns = @JoinColumn(name ="userId"), inverseJoinColumns = @JoinColumn(name="tripId"))
-
-private Set<Trip> trips = new HashSet<>();
+    @ManyToMany(mappedBy = "users")
+    private Set<Trip> trips;
 
     public User(String name, String lastname, String email, String password) {
         this.name = name;

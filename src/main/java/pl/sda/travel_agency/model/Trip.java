@@ -1,15 +1,16 @@
 package pl.sda.travel_agency.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +33,9 @@ public class Trip {
     @JoinColumn(name = "destinationId")
     private Destination destination;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "soldTrip", joinColumns = @JoinColumn(name = "tripId"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+    private Set<User> users;
 
 
     public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult

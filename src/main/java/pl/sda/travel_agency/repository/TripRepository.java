@@ -13,6 +13,7 @@ import java.util.List;
 public interface TripRepository extends JpaRepository<Trip, Long> {
 
     List<Trip> findAll();
+    Trip findByTripId(Long tripId);
 
     //wyciągnięcie wycieczek ze względu na podział na kontynenty do wyświetlenia na stronie głównej
 

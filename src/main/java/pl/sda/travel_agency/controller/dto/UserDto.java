@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Data
 public class UserDto {
 
+    private Long id_user;
 
     @NotBlank(message = "Insert your name")
     private String name;
