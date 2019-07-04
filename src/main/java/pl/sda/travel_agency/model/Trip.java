@@ -26,10 +26,10 @@ public class Trip {
     private BigDecimal promotionalPrice;
     private Integer placeForAdult;
     private Integer placeForChildren;
-    private boolean promotion=false;
+    private String promotion;
     private String departure;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "destinationId")
     private Destination destination;
 
@@ -38,21 +38,22 @@ public class Trip {
     private Set<User> users;
 
 
-    public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult
-    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, String departure, Destination destination ){
-        this.departureTime=departureTime;
-        this.arrivalTime=arrivalTime;
-        this.feedingType=feedingType;
-        this.placeForChildren=placeForChildren;
-        this.placeForAdult=placeForAdult;
-        this.pricePerAdult=pricePerAdult;
-        this.pricePerChild=pricePerChild;
-        this.promotionalPrice=promotionalPrice;
-        this.departure=departure;
-        this.destination=destination;
+    public Trip(LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult,
+                BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, String promotion, String departure,
+                Destination destination) {
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.feedingType = feedingType;
+        this.placeForChildren = placeForChildren;
+        this.placeForAdult = placeForAdult;
+        this.pricePerAdult = pricePerAdult;
+        this.pricePerChild = pricePerChild;
+        this.promotionalPrice = promotionalPrice;
+        this.promotion = promotion;
+        this.departure = departure;
+        this.destination = destination;
     }
-            //,Integer placeForChildren, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Departure departure, Destination destination) {
 
 
-    }
+}
 

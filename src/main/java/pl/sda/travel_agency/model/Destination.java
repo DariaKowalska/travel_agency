@@ -3,12 +3,8 @@ package pl.sda.travel_agency.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.sda.travel_agency.model.enums.CityEnum;
-import pl.sda.travel_agency.model.enums.ContinentEnum;
-import pl.sda.travel_agency.model.enums.CountryEnum;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,13 +15,9 @@ public class Destination {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long destinationId;
-    private String  cityEnum;
-    private String countryEnum;
-    private String continentEnum;
+    private String city;
+    private String country;
+    private String continent;
     private String hotel;
 
-//    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-//            fetch = FetchType.LAZY, mappedBy = "destination")
-//
-//    private List<Trip> trips;
 }

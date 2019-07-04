@@ -20,9 +20,10 @@ private Long tripId;
     private Integer placeForChildren;
     private BigDecimal pricePerAdult;
     private BigDecimal pricePerChild;
-    BigDecimal promotionalPrice;
+    private BigDecimal promotionalPrice;
+    private String promotion;
     private String departure;
-     private Destination destination;
+    private Destination destination;
 
 
 }

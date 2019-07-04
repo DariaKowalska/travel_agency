@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
@@ -85,13 +84,10 @@
 <!--formularz-->
 
 
-<form th:action="@{/find}">
+<form th:action="@{/continent}">
     <label>
-        <input type="text" th:value="${promotion}" name="promotion">Promocja</label>
-    <label>
-        <input type="text" th:value="${continent}" name="continent">Kontynent</label>
-    <label>
-        <input type="text" th:value="${country}" name="country">Państwo</label>
+        <input type="text" th:value="${continent}" name="continent">
+    </label>
 
     <button>szukaj</button>
 
@@ -192,5 +188,3 @@
 
 </body>
 </html>
-
-
