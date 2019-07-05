@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Let's Take A Trip !</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/agency.css" rel="stylesheet">
+
+</head>
+<body id="page-top">
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Let's Take A Trip ! </a>-->
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" th:href="@{/}">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#search">Wyszukaj wyjazd</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            <a class="btn btn-primary btn-xl text-uppercase">Dostępne wyjazdy</a>
+        </div>
+    </div>
+</header>
+
+
+<table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Państwo</th>
+        <th>Data wyjazdu</th>
+        <th>Data przyjazdu</th>
+        <th>Rodzaj wyżywienia</th>
+        <th>Cena dla dorosłych</th>
+        <th>Cena dla dzieci</th>
+        <th>Ilość miejsc dla dorosłych</th>
+        <th>Ilość miejsc dla dzieci</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="trip : ${trips}">
+        <td th:text="${trip.getCountry()}"></td>
+        <td th:text="${trip.getDepartureTime()}"></td>
+        <td th:text="${trip.arrivalTime}"></td>
+        <td th:text="${trip.feedingType}"></td>
+        <td th:text="${trip.pricePerAdult}"></td>
+        <td th:text="${trip.pricePerChild}"></td>
+        <td th:text="${trip.placeForAdult}"></td>
+        <td th:text="${trip.placeForChildren}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/}"> Wróć </a>
+</body>
+</html>
+

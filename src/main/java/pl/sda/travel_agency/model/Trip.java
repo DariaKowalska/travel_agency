@@ -3,6 +3,7 @@ package pl.sda.travel_agency.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
 import javax.persistence.*;
@@ -27,6 +28,9 @@ public class Trip {
     private Integer placeForChildren;
     private boolean promotion=false;
 
+    private String continent;
+    private String country;
+
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "departureId")
     private Departure departure;
@@ -38,7 +42,22 @@ public class Trip {
 
 
     public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult
-    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,  Departure departure, Destination destination ){
+    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,  Departure departure, Destination destination,String continent, String country ){
+        this.departureTime=departureTime;
+        this.arrivalTime=arrivalTime;
+        this.feedingType=feedingType;
+        this.placeForChildren=placeForChildren;
+        this.placeForAdult=placeForAdult;
+        this.pricePerAdult=pricePerAdult;
+        this.pricePerChild=pricePerChild;
+        this.promotionalPrice=promotionalPrice;
+        this.departure=departure;
+        this.destination=destination;
+        this.continent=continent;
+        this.country=country;
+    }
+
+    public Trip(LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Departure departure, Destination destination) {
         this.departureTime=departureTime;
         this.arrivalTime=arrivalTime;
         this.feedingType=feedingType;
@@ -50,7 +69,7 @@ public class Trip {
         this.departure=departure;
         this.destination=destination;
     }
-            //,Integer placeForChildren, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Departure departure, Destination destination) {
+    //,Integer placeForChildren, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Departure departure, Destination destination) {
 
 
     }

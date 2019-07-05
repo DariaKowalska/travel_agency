@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
 import java.math.BigDecimal;
@@ -24,6 +25,8 @@ public class TripDto {
     BigDecimal promotionalPrice;
     private Departure departure;
      private Destination destination;
+
+     private ContinentEnum continentEnum;
 
 
 }

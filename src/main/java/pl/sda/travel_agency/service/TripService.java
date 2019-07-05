@@ -23,31 +23,30 @@ public class TripService {
     @Autowired
     public TripService(TripRepository tripRepository) {
         this.tripRepository = tripRepository;
-
     }
 
-public List<Trip> getAllTrip() {
-       return tripRepository.findAll();
-   }
-
-//    public List<Trip> getTripByPromotion(Trip promotion) {
-//        return tripRepository.findAllByPromotion(promotion);
-//    }
-
-
-
-
-
-
+    public List<Trip> getAllTrip() {
+        return tripRepository.findAll();
+    }
 
     public void addTrip(TripDto tripDto) {
 
-        Trip trip = new Trip( tripDto.getDepartureTime(),
+        Trip trip = new Trip(tripDto.getDepartureTime(),
                 tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
 
-
-
         tripRepository.save(trip);
+    }
+
+    public Trip findTrip(Long tripId) {
+        return tripRepository.findFirstByTripId(tripId);
+    }
+
+    public List<Trip> findTripByContinent(String continent) {
+        return tripRepository.findAllByContinent(continent);
+    }
+
+    public List<Trip>findTripByCountry(String country){
+        return tripRepository.findAllByCountry(country);
     }
 
 }

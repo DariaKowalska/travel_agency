@@ -12,6 +12,7 @@ import pl.sda.travel_agency.model.*;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 import pl.sda.travel_agency.model.Trip;
+import pl.sda.travel_agency.model.enums.ContinentEnum;
 
 
 import java.util.List;
@@ -23,6 +24,10 @@ public interface TripRepository extends JpaRepository<Trip, Long>{
     @Override
     List<Trip> findAll();
 
+    List<Trip> findAllByContinent(String continent);
 
+    Trip findFirstByTripId(Long tripId);
+
+    List<Trip>findAllByCountry(String country);
 
 }
