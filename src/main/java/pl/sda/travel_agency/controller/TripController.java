@@ -20,7 +20,6 @@ import pl.sda.travel_agency.service.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
-
 @Controller
 public class TripController {
 
@@ -89,130 +88,17 @@ public class TripController {
         return "redirect:/";
     }
 
-
-    @GetMapping("/kontynent/europa")
-    public String getTripByContinentEuropa(Model model) {
-        model.addAttribute("trips", tripService.findTripByContinent("EUROPA"));
+    @GetMapping("/kontynent/{continent}")
+    public String getTripByContinent(@PathVariable String continent, Model model) {
+        model.addAttribute("trips", tripService.findTripByContinent(continent));
         return "continentPage";
     }
 
-    @GetMapping("/kontynent/azja")
-    public String getTripByContinentAzja(Model model) {
-        model.addAttribute("trips", tripService.findTripByContinent("AZJA"));
-        return "continentPage";
-    }
 
-    @GetMapping("/kontynent/afryka")
-    public String getTripByContinentAfryka(Model model) {
-        model.addAttribute("trips", tripService.findTripByContinent("AFRYKA"));
-        return "continentPage";
-    }
-
-    @GetMapping("/kontynent/ameryka")
-    public String getTripByContinentAmeryka(Model model) {
-        model.addAttribute("trips", tripService.findTripByContinent("AMERYKA"));
-        return "continentPage";
-    }
-
-    @GetMapping("panstwo/islandia")
-    public String getTripByCountryIsland(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("ISLANDIA"));
+    @GetMapping("panstwo/{country}")
+    public String getTripByCountry(@PathVariable String country, Model model) {
+        model.addAttribute("trips", tripService.findTripByCountry(country));
         return "countryPage";
     }
 
-    @GetMapping("panstwo/wlochy")
-    public String getTripByCountryItaly(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("WŁOCHY"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/hiszpania")
-    public String getTripByCountrySpain(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("HISZPANIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/chorwacja")
-    public String getTripByCountryCroatia(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("CHORWACJA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/grecja")
-    public String getTripByCountryGreece(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("GRECJA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/tajlandia")
-    public String getTripByCountryThailand(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("TAJLANDIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/japonia")
-    public String getTripByCountryJapan(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("JAPONIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/wietnam")
-    public String getTripByCountryVietnam(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("WIETNAM"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/nepal")
-    public String getTripByCountryNepal(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("NEPAL"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/maroko")
-    public String getTripByCountryMarocco(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("MAROKO"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/kenia")
-    public String getTripByCountryKenya(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("KENIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/namibia")
-    public String getTripByCountryNamibia(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("NAMIBIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/zanzibar")
-    public String getTripByCountryZanzibar(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("ZANZIBAR"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/usa")
-    public String getTripByCountryUnitedStates(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("USA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/kanada")
-    public String getTripByCountryCanada(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("KANADA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/brazylia")
-    public String getTripByCountryBrasil(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("BRAZYLIA"));
-        return "countryPage";
-    }
-
-    @GetMapping("panstwo/meksyk")
-    public String getTripByCountryMexico(Model model) {
-        model.addAttribute("trips", tripService.findTripByCountry("MEKSYK"));
-        return "countryPage";
-    }
 }
