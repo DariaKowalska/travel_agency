@@ -23,6 +23,7 @@ import java.util.Optional;
 public interface TripRepository extends JpaRepository<Trip, Long>{
     @Override
     List<Trip> findAll();
+    Trip findByTripId(Long tripId);
 
     List<Trip> findAllByContinent(String continent);
 
