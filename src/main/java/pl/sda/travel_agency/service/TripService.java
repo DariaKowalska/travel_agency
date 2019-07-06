@@ -26,17 +26,8 @@ public class TripService {
         return tripRepository.findAll();
     }
 
-
-    public List<Trip> getTripByContinent(String continent) {
-        return tripRepository.findByDestinationContinent(continent);
-    }
-
-    public List<Trip> getTripByCountry(String country) {
-        return tripRepository.findByDestinationCountry(country);
-    }
-
-    public List<Trip> getByPromotionAndDestinationContinentAndDestinationCountry(String promotion, String continent, String country) {
-        return tripRepository.findByPromotionAndDestinationContinentAndDestinationCountry(promotion, continent, country);
+    public List<Trip> getByDestinationContinentAndDestinationCountry(String continent, String country) {
+        return tripRepository.findByDestinationContinentAndDestinationCountry(continent, country);
     }
 
     public void buyTrip(TripDto tripDto, UserDto userDto) {
@@ -55,11 +46,10 @@ public class TripService {
 
     public void addTrip(TripDto tripDto) {
 
-        Trip trip = new Trip( tripDto.getDepartureTime(),
-                tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(), tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(), tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
-
-
-
+        Trip trip = new Trip(tripDto.getDepartureTime(),
+                tripDto.getArrivalTime(), tripDto.getFeedingType(), tripDto.getPlaceForChildren(),
+                tripDto.getPlaceForAdult(), tripDto.getPricePerAdult(), tripDto.getPricePerChild(),
+                tripDto.getPromotionalPrice(), tripDto.getDeparture(), tripDto.getDestination());
         tripRepository.save(trip);
     }
 
@@ -68,11 +58,11 @@ public class TripService {
     }
 
     public List<Trip> findTripByContinent(String continent) {
-        return tripRepository.findAllByContinent(continent);
+        return tripRepository.findByDestinationContinent(continent);
     }
 
-    public List<Trip>findTripByCountry(String country){
-        return tripRepository.findAllByCountry(country);
+    public List<Trip> findTripByCountry(String country) {
+        return tripRepository.findByDestinationCountry(country);
     }
 
 }

@@ -81,8 +81,8 @@
     </thead>
     <tbody>
     <tr th:each="trip : ${trips}">
-        <td th:text="${trip.getContinent()}"></td>
-        <td th:text="${trip.getCountry()}"></td>
+        <td th:text="${trip.getDestination().getContinent()}"></td>
+        <td th:text="${trip.getDestination().getCountry()}"></td>
         <td th:text="${trip.getDepartureTime()}"></td>
         <td th:text="${trip.arrivalTime}"></td>
         <td th:text="${trip.feedingType}"></td>
