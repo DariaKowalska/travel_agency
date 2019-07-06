@@ -7,37 +7,27 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
 
-
 import org.springframework.web.bind.annotation.*;
 
 
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.sda.travel_agency.controller.dto.TripDto;
 import pl.sda.travel_agency.controller.dto.UserDto;
-import pl.sda.travel_agency.model.Departure;
-import pl.sda.travel_agency.model.Destination;
-import pl.sda.travel_agency.model.Trip;
-import pl.sda.travel_agency.model.User;
-import pl.sda.travel_agency.model.enums.ContinentEnum;
-import pl.sda.travel_agency.model.enums.CountryEnum;
-import pl.sda.travel_agency.model.enums.FeedingEnum;
-import pl.sda.travel_agency.model.enums.StandardEnum;
+import pl.sda.travel_agency.model.*;
 import pl.sda.travel_agency.repository.TripRepository;
 import pl.sda.travel_agency.service.TripService;
 import pl.sda.travel_agency.service.UserService;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class TripController {
 
-    TripService tripService;
-    UserService userService;
-    TripRepository tripRepository;
+    private TripService tripService;
+    private UserService userService;
+
+   private TripRepository tripRepository;
 
     @Autowired
     public TripController(TripService tripService, UserService userService,TripRepository tripRepository) {
@@ -46,16 +36,21 @@ public class TripController {
         this.tripRepository = tripRepository;
     }
 
-
-    @GetMapping("/trip")
+    @GetMapping("/show")
     public String getAllTrip(Model model) {
-
         List<Trip> trips = tripService.getAllTrip();
         model.addAttribute("trips", trips);
-        return "index";
+        return "show";
     }
 
-
+    @GetMapping(value = "/find")
+    public String getTripByPromotionAndDestinationContinentAndDestinationCountry(@RequestParam(required = false) String promotion,
+                                                                                 @RequestParam(required = false) String continent,
+                                                                                 @RequestParam(required = false) String country,
+                                                                                 Model model) {
+        model.addAttribute("tripsList", tripService.getByPromotionAndDestinationContinentAndDestinationCountry(promotion, continent, country));
+        return "findPage";
+    }
 
     @GetMapping("/admin/addTripForm")
     public String getTrip(Model model) {

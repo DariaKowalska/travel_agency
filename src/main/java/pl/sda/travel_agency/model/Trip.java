@@ -27,15 +27,12 @@ public class Trip {
     private Integer placeForAdult;
     private Integer placeForChildren;
     private boolean promotion=false;
+    private String departure;
 
     private String continent;
     private String country;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "departureId")
-    private Departure departure;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     @JoinColumn(name = "destinationId")
     private Destination destination;
 
@@ -44,35 +41,20 @@ public class Trip {
     private Set<User> users;
 
 
-    public Trip( LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult
-    , BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,  Departure departure, Destination destination,String continent, String country ){
-        this.departureTime=departureTime;
-        this.arrivalTime=arrivalTime;
-        this.feedingType=feedingType;
-        this.placeForChildren=placeForChildren;
-        this.placeForAdult=placeForAdult;
-        this.pricePerAdult=pricePerAdult;
-        this.pricePerChild=pricePerChild;
-        this.promotionalPrice=promotionalPrice;
-        this.departure=departure;
-        this.destination=destination;
-        this.continent=continent;
-        this.country=country;
+    public Trip(LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult,
+                BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice,String departure,
+                Destination destination) {
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.feedingType = feedingType;
+        this.placeForChildren = placeForChildren;
+        this.placeForAdult = placeForAdult;
+        this.pricePerAdult = pricePerAdult;
+        this.pricePerChild = pricePerChild;
+        this.promotionalPrice = promotionalPrice;
+        this.departure = departure;
+        this.destination = destination;
     }
-
-    public Trip(LocalDate departureTime, LocalDate arrivalTime, FeedingEnum feedingType, Integer placeForChildren, Integer placeForAdult, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Departure departure, Destination destination) {
-        this.departureTime=departureTime;
-        this.arrivalTime=arrivalTime;
-        this.feedingType=feedingType;
-        this.placeForChildren=placeForChildren;
-        this.placeForAdult=placeForAdult;
-        this.pricePerAdult=pricePerAdult;
-        this.pricePerChild=pricePerChild;
-        this.promotionalPrice=promotionalPrice;
-        this.departure=departure;
-        this.destination=destination;
-    }
-            //,Integer placeForChildren, LocalDate arrivalTime, FeedingEnum feedingType, BigDecimal pricePerAdult, BigDecimal pricePerChild, BigDecimal promotionalPrice, Integer placeForAdult, Departure departure, Destination destination) {
 
 
     }

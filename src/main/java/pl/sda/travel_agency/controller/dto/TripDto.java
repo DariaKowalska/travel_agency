@@ -2,7 +2,6 @@ package pl.sda.travel_agency.controller.dto;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.sda.travel_agency.model.Departure;
 import pl.sda.travel_agency.model.Destination;
 import pl.sda.travel_agency.model.enums.ContinentEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
@@ -22,9 +21,10 @@ private Long tripId;
     private Integer placeForChildren;
     private BigDecimal pricePerAdult;
     private BigDecimal pricePerChild;
-    BigDecimal promotionalPrice;
-    private Departure departure;
-     private Destination destination;
+    private BigDecimal promotionalPrice;
+    private String promotion;
+    private String departure;
+    private Destination destination;
 
      private ContinentEnum continentEnum;
 

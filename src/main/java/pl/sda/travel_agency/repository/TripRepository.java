@@ -1,23 +1,14 @@
 package pl.sda.travel_agency.repository;
 
-import org.springframework.data.domain.Example;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-import pl.sda.travel_agency.model.*;
-
-
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
+import pl.sda.travel_agency.model.*;
 import pl.sda.travel_agency.model.Trip;
 import pl.sda.travel_agency.model.enums.ContinentEnum;
 
 
 import java.util.List;
-import java.util.Optional;
-
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long>{
@@ -25,8 +16,14 @@ public interface TripRepository extends JpaRepository<Trip, Long>{
     List<Trip> findAll();
     Trip findByTripId(Long tripId);
 
+
+
+    List<Trip> findByDestinationContinent(String continent);
     List<Trip> findAllByContinent(String continent);
 
+    List<Trip> findByDestinationCountry(String country);
+
+    List<Trip> findByPromotionAndDestinationContinentAndDestinationCountry(String promotion, String continent, String country);
     Trip findFirstByTripId(Long tripId);
 
     List<Trip>findAllByCountry(String country);
