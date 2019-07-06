@@ -77,23 +77,80 @@
         <th>Cena dla dzieci</th>
         <th>Ilość miejsc dla dorosłych</th>
         <th>Ilość miejsc dla dzieci</th>
+        <th>Zakup</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="trip : ${trips}">
-        <td th:text="${trip.getDestination().getContinent()}"></td>
-        <td th:text="${trip.getDestination().getCountry()}"></td>
-        <td th:text="${trip.getDepartureTime()}"></td>
+        <td th:text="${trip.destination.continent}"></td>
+        <td th:text="${trip.destination.country}"></td>
+        <td th:text="${trip.departureTime}"></td>
         <td th:text="${trip.arrivalTime}"></td>
         <td th:text="${trip.feedingType}"></td>
         <td th:text="${trip.pricePerAdult}"></td>
         <td th:text="${trip.pricePerChild}"></td>
         <td th:text="${trip.placeForAdult}"></td>
         <td th:text="${trip.placeForChildren}"></td>
+        <td><button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button></td>
     </tr>
     </tbody>
 </table>
 <a th:href="@{/}"> Wróć </a>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Your Website 2019</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li class="list-inline-item">
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Contact form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/agency.min.js"></script>
+
 </body>
 </html>
 
