@@ -1,28 +1,26 @@
 package pl.sda.travel_agency.repository;
 
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
+import org.springframework.stereotype.Repository;
 import pl.sda.travel_agency.model.*;
 
 
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.stereotype.Repository;
-import pl.sda.travel_agency.model.Trip;
-
-
 import java.util.List;
-import java.util.Optional;
-
 
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long>{
-    @Override
+
     List<Trip> findAll();
 
+    Trip findByTripId(Long tripId);
+
+    List<Trip> findByDestinationContinent(String continent);
+
+    List<Trip> findByDestinationCountry(String country);
+
+    List<Trip> findByDestinationContinentAndDestinationCountry(String continent, String country);
+
+    Trip findFirstByTripId(Long tripId);
 
 
 }

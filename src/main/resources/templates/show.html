@@ -34,10 +34,10 @@
 
         <a class="navbar-brand js-scroll-trigger" th:href="@{/}">Let's Take A Trip ! </a>
 
-                <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
-                <a class="navbar-brand text-success" th:if="${auth != null}" text="${auth.getPrincipal().getUsername()}">Login
-                    in</a>
-<!--        <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>-->
+        <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
+        <a class="navbar-brand text-success" th:if="${auth != null}" text="${auth.getPrincipal().getUsername()}">Login
+            in</a>
+        <!--        <a class="navbar-brand text-success" th:if="${auth != null}" th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>-->
 
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,11 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#search">Wyszukaj wyjazd</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a>
+                </li>
+
+
                 <li class="nav-item">
                     <a class="nav-link" th:if="${auth == null}" th:href="@{/login}">Logowanie</a>
                 </li>
@@ -67,7 +72,7 @@
 </nav>
 
 <!-- Header -->
-<header class="masthead" style="background-image: url('../img/header-bg.jpg')">
+<header class="masthead" style="background-image: url('../static/img/header-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
         <div class="intro-text">
@@ -78,43 +83,48 @@
 
 <!--formularz-->
 <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
 
-                <form th:action="@{/login-process}" th:method="post" >
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
+    <table>
+        <tr>
+            <th>ID wycieczki</th>
+            <th>Termin wyjazdu</th>
+            <th>Termin powrotu</th>
+            <th>Typ wyżywienia</th>
+            <th>Cena za osobę dorosłą</th>
+            <th>Cena za dziecko</th>
+            <th>Cena promocyjna</th>
+            <th>Ilość miejsc dla dorosłych</th>
+            <th>Ilość miejsc dla dzieci</th>
+            <th>Promocja</th>
+            <th>Miasto wylotu</th>
+            <th>Id celu podróży</th>
+            <th>Miasto </th>
+            <th>Państwo</th>
+            <th>Kontynent</th>
+            <th>Hotel</th>
+        </tr>
+        <tr th:each="trip : ${trips}">
+            <td th:text="${trip.tripId}"></td>
+            <td th:text="${trip.departureTime}"></td>
+            <td th:text="${trip.arrivalTime}"></td>
+            <td th:text="${trip.feedingType}"></td>
+            <td th:text="${trip.pricePerAdult}"></td>
+            <td th:text="${trip.pricePerChild}"></td>
+            <td th:text="${trip.promotionalPrice}"></td>
+            <td th:text="${trip.placeForAdult}"></td>
+            <td th:text="${trip.placeForChildren}"></td>
+            <td th:text="${trip.promotion}"></td>
+            <td th:text="${trip.departure}"></td>
+            <td th:text="${trip.destination.destinationId}"></td>
+            <td th:text="${trip.destination.city}"></td>
+            <td th:text="${trip.destination.country}"></td>
+            <td th:text="${trip.destination.continent}"></td>
+            <td th:text="${trip.destination.hotel}"></td>
+        </tr>
+    </table>
 
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>Email</label>
-                            <input th:name="email" type="text" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>Hasło</label>
-                            <input th:name="password" type="password" class="form-control" placeholder="Hasło">
-                        </div>
 
-                    </div>
-                    <br>
-                    <div id="success"></div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary" id="sendMessageButton">Zaloguj się</button>
-                    </div>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
 </article>
-
-
-
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -171,4 +181,3 @@
 
 </body>
 </html>
-

@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.travel_agency.controller.dto.UserDto;
+import pl.sda.travel_agency.model.Trip;
+import pl.sda.travel_agency.service.TripService;
 import pl.sda.travel_agency.service.UserService;
 
 import javax.validation.Valid;
@@ -15,9 +17,11 @@ import javax.validation.Valid;
 public class UserController {
 
     UserService userService;
+    TripService tripService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, TripService tripService) {
+        this.tripService = tripService;
         this.userService = userService;
     }
 
@@ -44,6 +48,20 @@ public class UserController {
     @GetMapping("/")
     public String showIndex(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
+
+        Trip t1 = tripService.findTrip(3L);
+        model.addAttribute("t1", t1);
+        Trip t2 = tripService.findTrip(4L);
+        model.addAttribute("t2", t2);
+        Trip t3 = tripService.findTrip(5L);
+        model.addAttribute("t3", t3);
+        Trip t4 = tripService.findTrip(6L);
+        model.addAttribute("t4", t4);
+        Trip t5 = tripService.findTrip(7L);
+        model.addAttribute("t5", t5);
+        Trip t6 = tripService.findTrip(8L);
+        model.addAttribute("t6", t6);
+
         return "index";
     }
 

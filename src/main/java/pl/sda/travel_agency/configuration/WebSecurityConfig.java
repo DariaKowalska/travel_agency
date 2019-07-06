@@ -25,9 +25,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
 
 
-                // tutaj są URL wymagające autoryzacji - strefa chroniona
-                // .antMatchers(/url) -> wymaga autoryzacji
-                //         .hasAnyAuthority("uprawnienie") //-> dla określonego uprawnienia
+                 //tutaj są URL wymagające autoryzacji - strefa chroniona
+//                 .antMatchers("/admin/**")
+//                         .hasAnyAuthority("/addTrip/") //-> dla określonego uprawnienia
 //                .antMatchers("/deletepost/**")
 //                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
 //                .antMatchers("/addpost")
