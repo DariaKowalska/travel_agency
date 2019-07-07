@@ -30,16 +30,6 @@ public class TripService {
         return tripRepository.findByDestinationContinentAndDestinationCountry(continent, country);
     }
 
-    public void buyTrip(TripDto tripDto, UserDto userDto) {
-        User user = userRepository.findFirstByEmail(userDto.getEmail());
-        Trip trip = tripRepository.findByTripId(tripDto.getTripId());
-        trip.getUsers().add(user);
-        user.getTrips().add(trip);
-        userRepository.save(user);
-        tripRepository.save(trip);
-
-    }
-
     public User findUser(String email) {
         return userRepository.findFirstByEmail(email);
     }
@@ -65,5 +55,16 @@ public class TripService {
         return tripRepository.findByDestinationCountry(country);
     }
 
+
+    public void buyTrip(String email, Long tripId) {
+
+
+        User user = userRepository.findFirstByEmail(email);
+        Trip trip = tripRepository.findByTripId(tripId);
+
+        trip.getUsers().add(user);
+        tripRepository.save(trip);
+
+    }
 }
 

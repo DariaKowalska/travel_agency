@@ -3,7 +3,6 @@ package pl.sda.travel_agency.controller.dto;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.sda.travel_agency.model.Destination;
-import pl.sda.travel_agency.model.enums.ContinentEnum;
 import pl.sda.travel_agency.model.enums.FeedingEnum;
 
 import java.math.BigDecimal;
@@ -25,8 +24,4 @@ private Long tripId;
     private String promotion;
     private String departure;
     private Destination destination;
-
-     private ContinentEnum continentEnum;
-
-
-}
+    }

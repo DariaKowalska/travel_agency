@@ -114,8 +114,8 @@
         <td th:text="${trip.placeForAdult}"></td>
         <td th:text="${trip.placeForChildren}"></td>
         <td th:text="${trip.promotion}"></td>
-        <td th:text="${trip.destination.destinationId}"></td>
-        <td><button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button></td>
+        <td th:text="${trip.departure}"></td>
+        <td><button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${trip.tripId}}">Kup!</a></button></td>
     </tr>
     </tbody>
 </table>
