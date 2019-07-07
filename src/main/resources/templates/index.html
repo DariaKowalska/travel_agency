@@ -1,32 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Let's Take A Trip</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <link href="/css/agency.min.css" rel="stylesheet">
-
-</head>
+<head th:replace="fragments/head :: head"> </head>
 
 <body id="page-top">
+
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -80,15 +58,7 @@
     </div>
 </nav>
 
-<!-- Header -->
-<header class="masthead">
-    <div class="container">
-        <div class="intro-text">
-            <div class="intro-lead-in">A może by tak rzucić wszystko i wyjechać w Bieszczady...</div>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#about">Gdzie na wakacje?</a>
-        </div>
-    </div>
-</header>
+<header th:replace="fragments/header :: header"> </header>
 
 <!-- Last Minute -->
 <section class="bg-light page-section" id="lastminute">
@@ -409,45 +379,7 @@
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-4">
-                <span class="copyright">Copyright &copy; Your Website 2019</span>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline social-buttons">
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline quicklinks">
-                    <li class="list-inline-item">
-                        <a href="#">Privacy Policy</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">Terms of Use</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
+<footer th:replace="fragments/footer :: footer"> </footer>
 
 <!-- Portfolio Modals -->
 
@@ -469,16 +401,18 @@
                             <p class="item-intro text-muted">Madryt</p>
                             <img class="img-fluid d-block mx-auto" src="img/portfolio/madryt.jpg" alt="">
                             <p></p>
+
                             <ul class="list-inline">
-                                <li th:text="${ 'Data wyjazdu: ' + t1.getArrivalTime()}"></li>
-                                <li th:text="${ 'Data powrotu: ' + t1.getDepartureTime()}"></li>
-                                <li th:text="${ 'Ilość miejsc dla dorosłych: ' + t1.getPlaceForAdult()}"></li>
-                                <li th:text="${ 'Ilość miejsc dla dzieci: ' + t1.getPlaceForChildren()}"></li>
-                                <li th:text="${ 'Cena dla osoby dorosłej: ' + t1.getPricePerAdult()+ 'zł'}"></li>
-                                <li th:text="${ 'Cena dla dzieci: ' + t1.getPricePerChild() + 'zł'}"></li>
+                                <li th:text="${ 'Data wyjazdu: ' + t1.arrivalTime}"></li>
+                                <li th:text="${ 'Data powrotu: ' + t1.departureTime}"></li>
+                                <li th:text="${ 'Ilość miejsc dla dorosłych: ' + t1.placeForAdult}"></li>
+                                <li th:text="${ 'Ilość miejsc dla dzieci: ' + t1.placeForChildren}"></li>
+                                <li th:text="${ 'Cena dla osoby dorosłej: ' + t1.pricePerAdult+ 'zł'}"></li>
+                                <li th:text="${ 'Cena dla dzieci: ' + t1.pricePerChild + 'zł'}"></li>
 
                             </ul>
-                                <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t1.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -514,7 +448,7 @@
                                 <li th:text="${ 'Cena dla dzieci: ' + t2.getPricePerChild() + 'zł'}"></li>
 
                             </ul>
-                            <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t2.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -549,7 +483,7 @@
                                 <li th:text="${ 'Cena dla osoby dorosłej: ' + t3.getPricePerAdult()+ 'zł'}"></li>
                                 <li th:text="${ 'Cena dla dzieci: ' + t3.getPricePerChild() + 'zł'}"></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t3.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -584,7 +518,7 @@
                                 <li th:text="${ 'Cena dla osoby dorosłej: ' + t4.getPricePerAdult()+ 'zł'}"></li>
                                 <li th:text="${ 'Cena dla dzieci: ' + t4.getPricePerChild() + 'zł'}"></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t4.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -619,7 +553,7 @@
                                 <li th:text="${ 'Cena dla osoby dorosłej: ' + t5.getPricePerAdult()+ 'zł'}"></li>
                                 <li th:text="${ 'Cena dla dzieci: ' + t5.getPricePerChild() + 'zł'}"></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t5.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -654,7 +588,7 @@
                                 <li th:text="${ 'Cena dla osoby dorosłej: ' + t6.getPricePerAdult()+ 'zł'}"></li>
                                 <li th:text="${ 'Cena dla dzieci: ' + t6.getPricePerChild() + 'zł'}"></li>
                             </ul>
-                            <button type="button" class="btn btn-secondary"><a th:href="@{/buyTrip}">Kup!</a></button>
+                            <button type="button" class="btn btn-secondary"><a th:href="@{'/buyTrip/' + ${t6.tripId}}">Kup!</a></button>
                         </div>
                     </div>
                 </div>
@@ -663,19 +597,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript -->
-<script src="/vendor/jquery/jquery.min.js"></script>
-<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Contact form JavaScript -->
-<script src="/js/jqBootstrapValidation.js"></script>
-<script src="/js/contact_me.js"></script>
-
-<!-- Custom scripts for this template -->
-<script src="/js/agency.min.js"></script>
+<div th:replace="fragments/jsLink :: script"> </div>
 
 </body>
 

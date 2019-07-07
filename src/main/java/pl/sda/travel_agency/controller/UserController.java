@@ -49,17 +49,24 @@ public class UserController {
     public String showIndex(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-        Trip t1 = tripService.findTrip(3L);
+//        for (int i = 0; i <2 ; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                Trip tr=tripService.findTrip(tripId);
+//                model.addAttribute("tr",tr);
+//            }
+
+     //   }
+        Trip t1 = tripService.findTrip(3l);
         model.addAttribute("t1", t1);
-        Trip t2 = tripService.findTrip(4L);
+        Trip t2 = tripService.findTrip(4l);
         model.addAttribute("t2", t2);
-        Trip t3 = tripService.findTrip(5L);
+        Trip t3 = tripService.findTrip(5l);
         model.addAttribute("t3", t3);
-        Trip t4 = tripService.findTrip(6L);
+        Trip t4 = tripService.findTrip(6l);
         model.addAttribute("t4", t4);
-        Trip t5 = tripService.findTrip(7L);
+        Trip t5 = tripService.findTrip(7l);
         model.addAttribute("t5", t5);
-        Trip t6 = tripService.findTrip(8L);
+        Trip t6 = tripService.findTrip(8l);
         model.addAttribute("t6", t6);
 
         return "index";
