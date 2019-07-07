@@ -24,55 +24,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
 
-
-                 //tutaj są URL wymagające autoryzacji - strefa chroniona
-//                 .antMatchers("/admin/**")
-//                         .hasAnyAuthority("/addTrip/") //-> dla określonego uprawnienia
-//                .antMatchers("/deletepost/**")
-//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .antMatchers("/addpost")
-//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .antMatchers("/updatepost/**")
-//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                // pozostałe URL udostępnij dla każdego
-
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
-                // formularz logowania
-                .formLogin()
-                // adres formularza logowania
-                .loginPage("/login")
-                // nazwa pola w formularzu dot. loginu
-                .usernameParameter("email")
-                // nazwa pola w formularzu dot. hasła
-                .passwordParameter("password")
-                // adres gdzie przekazywane są parametry formularza
-                .loginProcessingUrl("/login-process")
-                // domyśly URL po poprawnym zalogowaniu
-                .defaultSuccessUrl("/")
-                // domyśly URL po błędnym logowaniu
-                .failureUrl("/errorLogin")
+                .formLogin()// formularz logowania
+                .loginPage("/login")// adres formularza logowania
+                .usernameParameter("email")// nazwa pola w formularzu dot. loginu
+                .passwordParameter("password")// nazwa pola w formularzu dot. hasła
+                .loginProcessingUrl("/login-process")// adres gdzie przekazywane są parametry formularza
+                .defaultSuccessUrl("/")// domyśly URL po poprawnym zalogowaniu
+                .failureUrl("/errorLogin")// domyśly URL po błędnym logowaniu
                 .and()
                 .logout()
-                // adres do wylogowania
-                .logoutUrl("/logout")
-                // miejsce po wylogowaniu
-                .logoutSuccessUrl("/");
+                .logoutUrl("/logout")// adres do wylogowania
+                .logoutSuccessUrl("/");// miejsce po wylogowaniu
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .jdbcAuthentication()
-                // SQL dla logowania użytkownika po adresie email i haśle
-                .usersByUsernameQuery("SELECT u.email, u.password, u.active FROM user u WHERE u.email = ?")
-                // SQL dla przypisania uprawnień dla zalogowanego użytkownika
-                .authoritiesByUsernameQuery("SELECT u.email, u.role_enum FROM user u WHERE u.email = ?")
-                // wynik logowania
-                .dataSource(dataSource)
-                // szyfrowanie hasła
-                .passwordEncoder(bCryptPasswordEncoder);
+                .usersByUsernameQuery("SELECT u.email, u.password, u.active FROM user u WHERE u.email = ?")  // SQL dla logowania użytkownika po adresie email i haśle
+                .authoritiesByUsernameQuery("SELECT u.email, u.role_enum FROM user u WHERE u.email = ?")  // SQL dla przypisania uprawnień dla zalogowanego użytkownika
+                .dataSource(dataSource) // wynik logowania
+                .passwordEncoder(bCryptPasswordEncoder);// szyfrowanie hasła
     }
 
 }

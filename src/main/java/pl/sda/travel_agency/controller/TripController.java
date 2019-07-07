@@ -2,6 +2,7 @@ package pl.sda.travel_agency.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -67,24 +68,18 @@ public class TripController {
         return "redirect:/";
     }
 
-    @GetMapping("/buyTrip")
-    public String buyTrip(Model model, Authentication auth
-    ) {
+    @GetMapping("/buyTrip/{tripId}")
+    public String buyTrip(@PathVariable("tripId") Long tripId, Model model, Authentication auth) {
         model.addAttribute("auth", auth);
-        model.addAttribute("trip", new TripDto());
         model.addAttribute("user", new UserDto());
+        model.addAttribute("trip",tripService.findTrip(tripId) );
         return "buyTripForm";
     }
 
-    @PostMapping("/buyTrip")
-    public String buyTrip(@ModelAttribute("trip") @Valid TripDto tripDto, @ModelAttribute("user") @Valid UserDto userDto,
-                          BindingResult bindingResult) {
-
-//        if (bindingResult.hasErrors()) {
-//            return "/resultPage";
-//        }
-
-        tripService.buyTrip(tripDto, userDto);
+    @PostMapping("/buyTrip/{tripId}")
+    public String buyTrip(@PathVariable("tripId") Long tripId, Authentication auth) {
+        String email = ((UserDetails)auth.getPrincipal()).getUsername();
+        tripService.buyTrip(email,tripId);
         return "redirect:/";
     }
 

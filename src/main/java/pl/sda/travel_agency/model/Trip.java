@@ -34,7 +34,7 @@ public class Trip {
     private Destination destination;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "soldTrip", joinColumns = @JoinColumn(name = "tripId"), inverseJoinColumns = @JoinColumn(name = "id_user"))
+    @JoinTable(name = "soldTrip", joinColumns = @JoinColumn(name = "tripId"), inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
 
 
@@ -52,5 +52,6 @@ public class Trip {
         this.departure = departure;
         this.destination = destination;
     }
+
 }
 

@@ -4,11 +4,7 @@ import lombok.*;
 import pl.sda.travel_agency.model.enums.RoleEnum;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Set;
-import java.util.List;
 
 @Getter
 @Setter
@@ -18,7 +14,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_user;
+    private Long userId;
 
     private String name;
     private String lastname;

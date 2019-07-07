@@ -34,7 +34,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public  void confirmUser(String email){
+    public  void userToConfirm(String email){
         User confirmedUser = userRepository.findFirstByEmail(email);
         confirmedUser.setActive(true);
         userRepository.save(confirmedUser);
