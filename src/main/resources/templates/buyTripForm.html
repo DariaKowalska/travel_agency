@@ -7,22 +7,19 @@
 <body id="page-top">
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Let's Take A Trip ! </a>-->
-        <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
-        <a class="navbar-brand text-success" th:if="${auth != null}">
-<!--           th:text="${'użytkownik  ' + auth.getPrincipal().getName}">-->
-
-            Login in</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Let's Take A Trip ! </a>
+        <a class="navbar-brand text-warning" th:if="${auth == null}" th:href="@{/login}">Zaloguj się</a>
+        <a class="navbar-brand text-success" th:if="${auth != null}"
+           th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Zalogowany</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
+                aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
 
@@ -30,7 +27,7 @@
                     <a class="nav-link js-scroll-trigger" th:href="@{/}">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#search">Wyszukaj wyjazd</a>
+                    <a class="nav-link js-scroll-trigger" th:href="@{/find}">Wyszukaj wyjazd</a>
                 </li>
             </ul>
         </div>
@@ -41,13 +38,19 @@
 <header class="masthead">
     <div class="container">
         <div class="intro-text">
-            <a class="btn btn-primary btn-xl text-uppercase">Podsumowanie</a>
+            <div class="intro-lead-in">Podsumowanie</a>
         </div>
     </div>
 </header>
 
-<form th:action="@{'/buyTrip/' + ${trip.tripId}}" method="post" class="col m8 s12 offset-m2">
-    <div class="input-field col s6">
+<!--formularz-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto mb-3">
+
+            <form th:action="@{'/buyTrip/' + ${trip.tripId}}" method="post">
+                 <div class="input-field col s6">
 
         <ul class="list-inline">
 
@@ -62,7 +65,8 @@
 
         </ul>
         <div class="row s12">
-            <button class="btn waves-effect waves-light" type="submit" name="save">Zatwierdz
+            <button class="btn waves-effect waves-light" type="submit" name="save">
+                <a th:href="@{'/summary'}">Zatwierdz</a>
                 <i class="mdi-content-send right"></i>
             </button>
         </div>

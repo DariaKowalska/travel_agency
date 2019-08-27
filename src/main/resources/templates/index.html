@@ -4,59 +4,49 @@
 <head th:replace="fragments/head :: head"> </head>
 
 <body id="page-top">
-
-
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
+
         <a class="navbar-brand js-scroll-trigger" href="#page-top">Let's Take A Trip ! </a>
-
-        <a class="navbar-brand text-warning" th:if="${auth == null}">Not logged in</a>
+        <a class="navbar-brand text-warning" th:if="${auth == null}" th:href="@{/login}">Zaloguj się</a>
         <a class="navbar-brand text-success" th:if="${auth != null}"
-           th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Login in</a>
-
+           th:text="${'Hello ' + auth.getPrincipal().getUsername()}">Zalogowany</a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
+                aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#lastminute">Last Minute</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#hitylata">Hity lata 2019</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/find}">Wyszukaj wyjazd</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link" th:if="${auth == null}" th:href="@{/login}">Logowanie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:if="${auth != null}" th:href="@{/logout}">Wyloguj się</a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/registration}">Rejestracja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/admin/addTripForm}">Dodaj wyjazd </a>
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>
+
+
+
 
 <header th:replace="fragments/header :: header"> </header>
 
@@ -304,21 +294,21 @@
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="img/team/zab1.jpg" alt="">
                     <h4>Kierunek:</h4>
-                    <p class="text-muted">Wyprawa</p>
+                    <p class="text-muted">Tajlandia</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="img/team/zab2.jpg" alt="">
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Marketer</p>
+                    <h4>Kierunek:</h4>
+                    <p class="text-muted">Chorwacja</p>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="img/team/zab3.jpg" alt="">
-                    <h4>Diana Pertersen</h4>
-                    <p class="text-muted">Lead Developer</p>
+                    <h4>Kierunek:</h4>
+                    <p class="text-muted">Włochy</p>
                 </div>
             </div>
         </div>

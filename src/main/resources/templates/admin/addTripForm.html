@@ -1,33 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout/default">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head.html ::head"> </head>
-
 <body id="page-top">
 
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-xl navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand js-scroll-trigger" th:href="@{/}">Let's Take A Trip ! </a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Let's Take A Trip ! </a>
 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
+                aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
-
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" th:href="@{/}">Strona główna</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/find}">Wyszukaj wyjazd</a>
                 </li>
             </ul>
         </div>
@@ -38,26 +30,35 @@
 <header class="masthead">
     <div class="container">
         <div class="intro-text">
-            <a class="btn btn-primary btn-xl text-uppercase">Dodawanie wycieczki</a>
+            <div class="intro-lead-in">Dodaj wycieczkę</div>
         </div>
     </div>
 </header>
 
-<div class="row" layout:fragment="content">
+<!--formularz-->
 
-    <!--    <h2 class="indigo-text center">dodawanie wycieczki</h2>-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto mb-3">
 
     <form th:action="@{/admin/addTripForm}" th:object="${trip}" method="post" class="col m8 s12 offset-m2">
         <br>
         <div class="row">
             <label>Wyjazd do: </label>
         </div>
+
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="*{destination.Continent}" id="destinationContinent" type="text"/>
-                <label for="destinationContinent">Kontynent </label>
+                    <select th:field="*{destination.Continent}" id="destinationContinent">
+                        <option value="europa">Europa</option>
+                        <option value="azja">Azja</option>
+                        <option value="afryka">Afryka</option>
+                        <option value="ameryka">Ameryka</option>
+                    </select>
+                <label for="destinationContinent">Kontynent</label>
             </div>
         </div>
+
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="*{destination.Country}" id="destinationCountry" type="text"/>
@@ -95,8 +96,8 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${trip.placeForAdult}" id="place_For_Adult" type="number"/>
-                <label for="place_For_Adult">Ilość miejsc dla dorosłych </label>
+                <input th:field="${trip.placeForAdult}" id="placeForAdult" type="number"/>
+                <label for="placeForAdult">Ilość miejsc dla dorosłych </label>
             </div>
         </div>
         <div class="row">
@@ -140,6 +141,7 @@
 
 
 </div>
+    </div></div>
 <footer th:replace="fragments/footer.html ::footer"> </footer>
 
 <div th:replace="fragments/jsLink.html ::script"> </div>

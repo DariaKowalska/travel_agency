@@ -57,8 +57,6 @@ public class TripService {
 
 
     public void buyTrip(String email, Long tripId) {
-
-
         User user = userRepository.findFirstByEmail(email);
         Trip trip = tripRepository.findByTripId(tripId);
 

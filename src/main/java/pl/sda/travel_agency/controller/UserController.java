@@ -37,7 +37,7 @@ public class UserController {
             return "registerForm";
         }
         userService.saveUser(userDto);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -45,17 +45,19 @@ public class UserController {
         return "loginForm";
     }
 
+    @PostMapping("/login")
+    public String login(@ModelAttribute("user") @Valid UserDto userDto, BindingResult bindingResult,String email, String password){
+        if (bindingResult.hasErrors()) {
+            return "loginForm";
+        }
+        return "index";
+    }
+
+
     @GetMapping("/")
     public String showIndex(Model model, Authentication auth) {
         model.addAttribute("auth", auth);
 
-//        for (int i = 0; i <2 ; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                Trip tr=tripService.findTrip(tripId);
-//                model.addAttribute("tr",tr);
-//            }
-
-     //   }
         Trip t1 = tripService.findTrip(3l);
         model.addAttribute("t1", t1);
         Trip t2 = tripService.findTrip(4l);
