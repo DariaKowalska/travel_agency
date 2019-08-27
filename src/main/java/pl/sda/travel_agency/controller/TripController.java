@@ -82,6 +82,10 @@ public class TripController {
         tripService.buyTrip(email,tripId);
         return "redirect:/";
     }
+    @GetMapping("/summary")
+    public String summary(){
+        return "summary";
+    }
 
     @GetMapping("/kontynent/{continent}")
     public String getTripByContinent(@PathVariable String continent, Model model) {
@@ -93,7 +97,7 @@ public class TripController {
     @GetMapping("panstwo/{country}")
     public String getTripByCountry(@PathVariable String country, Model model) {
         model.addAttribute("trips", tripService.findTripByCountry(country));
-        return "countryPage";
+        return "continentPage";
     }
 
 }

@@ -11,21 +11,21 @@ public class UserDto {
 
     private Long id_user;
 
-    @NotBlank(message = "Insert your name")
+    @NotBlank(message = "Wprowadź imię")
     private String name;
 
 
-    @NotBlank(message = "Insert your lastname")
+    @NotBlank(message = "Wprowadź nazwisko")
     private String lastname;
 
 
-    @NotBlank(message = "Insert your email")
-    @Email(message = "Your email is not valid")
+    @NotBlank(message = "Wprowadź email")
+    @Email(message = "Email jest niepoprawny")
     private String email;
 
 
-    @NotBlank(message = "Password cant be empty")
-    @Size(min = 5, message = "Password too short")
+    @NotBlank(message = "Wprowadź hasło")
+    @Size(min = 5, message = "Hasło za krótkie")
     private String password;
 
 

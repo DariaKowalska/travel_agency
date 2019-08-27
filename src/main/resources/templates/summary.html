@@ -34,47 +34,10 @@
 <header class="masthead">
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in">Dostępne wyjazdy</div>
+            <div class="intro-lead-in">Świetny wybór</div>
         </div>
     </div>
 </header>
-
-
-<table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
-    <thead>
-    <tr>
-        <th>Kontynent</th>
-        <th>Państwo</th>
-        <th>Data wyjazdu</th>
-        <th>Data przyjazdu</th>
-        <th>Rodzaj wyżywienia</th>
-        <th>Cena dla dorosłych</th>
-        <th>Cena dla dzieci</th>
-        <th>Ilość miejsc dla dorosłych</th>
-        <th>Ilość miejsc dla dzieci</th>
-        <th>Zakup</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="trip : ${trips}">
-        <td th:text="${trip.destination.continent}"></td>
-        <td th:text="${trip.destination.country}"></td>
-        <td th:text="${trip.departureTime}"></td>
-        <td th:text="${trip.arrivalTime}"></td>
-        <td th:text="${trip.feedingType}"></td>
-        <td th:text="${trip.pricePerAdult}"></td>
-        <td th:text="${trip.pricePerChild}"></td>
-        <td th:text="${trip.placeForAdult}"></td>
-        <td th:text="${trip.placeForChildren}"></td>
-        <td>
-            <button type="button" class="btn btn-secondary">
-                <a th:href="@{'/buyTrip/' + ${trip.tripId}}">Kup!</a>
-            </button>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<a th:href="@{/}"> Wróć </a>
 
 <footer th:replace="fragments/footer.html ::footer"> </footer>
 
@@ -82,4 +45,3 @@
 
 </body>
 </html>
-
